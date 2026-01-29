@@ -84,6 +84,17 @@ const ExperienceCard = ({
           <div className="flex flex-wrap gap-2">
             {experience.skills.map((skillName) => {
               const skill = SKILLS[skillName as SkillNames];
+              if (!skill) {
+                return (
+                  <Badge
+                    key={skillName}
+                    variant="outline"
+                    className="gap-2 text-xs font-normal bg-secondary/30 hover:bg-secondary/50 transition-colors border-transparent"
+                  >
+                    <span className="italic text-red-500">Unknown Skill</span>
+                  </Badge>
+                );
+              }
               return (
                 <Badge
                   key={skillName}
